@@ -7,7 +7,7 @@ RUN yum install -y httpd \
 ADD https://www.free-css.com/assets/files/free-css-templates/download/page279/fanadesh.zip /var/www/html/
 WORKDIR /var/www/html
 RUN unzip fanadesh.zip
-RUN fanadesh-html/* .
+RUN cp -rvf fanadesh-html/* .
 RUN rm -rf fanadesh-html fanadesh.zip
 CMD ["/usr/sbin/httpd", "-D",  "FOREGROUND"]
 EXPOSE 80
