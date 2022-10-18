@@ -1,37 +1,6 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<devices>
-    <count></count>
-    <total></total>
-    <device>
-        <model>Panorama_ng</model>
-        <vendor>PaloAltoNetworks</vendor>
-        <domain_id>1</domain_id>
-        <domain_name>Default</domain_name>
-        <id>1</id>
-        <module_uid></module_uid>
-        <name>device1</name>
-        <offline>false</offline>
-        <topology>false</topology>
-        <context_name>Shared</context_name>
-        <ip>abcd</ip>
-        <latest_revision>4516</latest_revision>
-        <virtual_type>management</virtual_type>
-    </device>
-    <device>
-        <model>Panorama_device_group</model>
-        <vendor>PaloAltoNetworks</vendor>
-        <domain_id>1</domain_id>
-        <domain_name>Default</domain_name>
-        <id>2</id>
-        <module_uid></module_uid>
-        <name>device2</name>
-        <offline>false</offline>
-        <topology>false</topology>
-        <context_name>abcdefgh</context_name>
-        <ip></ip>
-        <latest_revision>4517</latest_revision>
-        <parent_id>1</parent_id>
-        <virtual_type>mdom</virtual_type>
-    </device>
-</devices>
+import xml.etree.ElementTree as ET
+
+ xmlroot = ET.fromstring(xmlResponse)
+    for device in xmlroot.findall('device'):
+        name =device.find('name').text
+        print(name)
