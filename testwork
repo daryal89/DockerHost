@@ -1,0 +1,40 @@
+from distutils.log import error
+import requests, json
+import urllib3
+#urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+
+def get_api_response(api_url, auth_mode, verify_ssl):
+    if auth_mode=="pwd":
+     response=requests.get(api_url, auth=('', ''), verify=False)
+    else:
+     response=requests.get(api_url,headers= {'apikey': '......'}, verify=verify_ssl)
+     return  response
+
+
+def get_list_of_devices():
+ try:
+  
+    api_action_url=""
+    apiresponse=get_api_response(api_action_url, "pwd", False)
+    #print(response.status_code)
+    print(apiresponse)
+ except requests.exceptions.HTTPError as error:
+ 
+    print(error)
+    print("Something went wrong while geting devices")
+
+
+def get_devices_rules(device_id):
+ try:
+  auth_headers=get_api_response()
+  api_action_url=""+device_id
+  response=requests.get(api_action_url,headers=auth_headers)
+  device_rule_list=json.loads(response.text)
+  return device_rule_list
+ except:
+   print("Something went wrong while geting device rule")
+
+
+
+get_list_of_devices()
+
