@@ -1,17 +1,16 @@
-def get_devices_rules(device_id):
- try:
-  
-   if device_id>0:
-    api_action_url=""
-    api_respnse=get_api_response(api_action_url, "pwd", False)
-    device_list_xml = ET.fromstring(api_respnse)
-    print("\n----------------List Of Device ID------------------\n")
-    for device_rule in device_list_xml.findall('rule'):
-         device_id =device_rule.find('id').text
-         print("Device ID : "+device_id+"\n")
- except:
-   print("Something went wrong while geting device rule")
+ list_of_device_ids=[]
 
-if __name__=="__main__":
+for device in xmlroot.findall('device'):
+        id =device.find('id').text
+        list_of_device_ids.append(id)        
+    else:
+       return list_of_device_ids
 
-   get_devices_rules(1)
+
+
+       if __name__=="__main__":
+
+   list_of_devices =  get_list_of_devices()
+   for device_id in list_of_devices:
+     print(device_id)
+   #get_devices_rules(1
